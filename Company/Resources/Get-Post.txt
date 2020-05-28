@@ -1,0 +1,12 @@
+Transfering Data from View to Controller or Client to server:-
+1-Get:-
+	Transfer data via query string
+2-Post:-
+	Transfer data via httpform
+
+
+Data Read by Action/Controller/Server:-
+
+1-Parameterized
+2-Context Objects
+3-Model
