@@ -90,6 +90,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Resources\Get-Post.txt" />
+    <Content Include="Resources\MVC-Architecture.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
