@@ -5,8 +5,17 @@ Transfering Data from View to Controller or Client to server:-
 	Transfer data via httpform
 
 
-Data Read by Action/Controller/Server:-
+Reading Data by Action/Controller/Server which is transfered from View to Controller:-
+View to Controller:-
 
 1-Parameterized
 2-Context Objects
 3-Model
+
+Transfering Data from Controller to View:-
+Controller to View:-
+
+1-Model
+2-ViewBag
+3-ViewData
+4-TempData

@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+
+    string name = "IT";
+    string location = "US";
+    string deptHead = "Faizan";
+
+    List<Department> departments = ViewBag.departments;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Departments</title>
+</head>
+<body>
+    <h1>Departments</h1>
+    <a href="/Department/AddDepartment">Add New Department</a>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Department Head</th>
+                </tr>
+            </thead>
+            @foreach(var dept in departments)
+            {
+                <tr>
+                    <td>@dept.Id</td>
+                    <td>@dept.Name</td>
+                    <td>@dept.Location</td>
+                    <td>@dept.DepartmentHead</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
