@@ -1,0 +1,48 @@
+﻿@{
+    Layout = null;
+
+    List<Employee> employees = ViewBag.employees;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Employees</title>
+</head>
+<body>
+    <h1>Employees</h1>
+    <a href="/Employee/AddEmployee">Add New Employee</a>
+    <div>
+        @if (employees.Count > 0)
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Age</th>
+                        <th>DOB</th>
+                    </tr>
+                </thead>
+                @foreach (var emp in employees)
+                {
+                    <tr>
+                        <td>@emp.Id</td>
+                        <td>@emp.Name</td>
+                        <td>@emp.Department.Name</td>
+                        <td>@emp.Age</td>
+                        <td>@emp.DateOfBirth</td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No Employees</p>
+        }
+    </div>
+</body>
+</html>

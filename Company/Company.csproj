@@ -129,6 +129,7 @@
       <DependentUpon>CompanyModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Department.cs">
       <DependentUpon>CompanyModel.tt</DependentUpon>
@@ -155,6 +156,8 @@
     <Content Include="Views\Department\AddDepartment.cshtml" />
     <Content Include="Views\Department\AddDepartmentSubmit.cshtml" />
     <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\AddEmployee.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

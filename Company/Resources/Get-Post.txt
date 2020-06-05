@@ -1,11 +1,11 @@
-Transfering Data from View to Controller or Client to server:-
+Transfering Data from View to Controller/Action or Client to server:-
 1-Get:-
 	Transfer data via query string
 2-Post:-
 	Transfer data via httpform
 
 
-Reading Data by Action/Controller/Server which is transfered from View to Controller:-
+Reading Data by Controller/Action/Server which is transfered from View to Controller:-
 View to Controller:-
 
 1-Parameterized
@@ -15,7 +15,7 @@ View to Controller:-
 Transfering Data from Controller to View:-
 Controller to View:-
 
-1-Model
-2-ViewBag
-3-ViewData
-4-TempData
+1-ViewBag (Dynamic Object of ViewData/ Wrapper of ViewData)
+2-ViewData (DataDictionary)
+3-TempData (Dictionary) (It can move data from action to action as well untill its being read. To keep its value stored from all subsequent requests we have to call TempData.Keep() and again it will keep data untill read)
+4-Model

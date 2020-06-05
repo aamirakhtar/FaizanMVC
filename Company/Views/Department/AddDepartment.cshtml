@@ -11,18 +11,28 @@
 </head>
 <body>
     <form method="post">
+        <p>@ViewBag.msg</p>
         <table>
             <tr>
                 <td>Name</td>
-                <td><input type="text" name="name" /></td>
+                <td>
+                    @*<input type="text" name="name" />*@
+                    @Html.TextBox("name")
+                </td>
             </tr>
             <tr>
                 <td>Location</td>
-                <td><input type="text" name="location" /></td>
+                <td>
+                    @*<input type="text" name="location" />*@
+                    @Html.TextBox("location")
+                </td>
             </tr>
             <tr>
                 <td>Department Head</td>
-                <td><input type="text" name="departmentHead" /></td>
+                <td>
+                    @*<input type="text" name="departmentHead" />*@
+                    @Html.TextBox("departmentHead")
+                </td>
             </tr>
             <tr>
                 <td colspan="2">
@@ -30,6 +40,7 @@
                 </td>
             </tr>
         </table>
+        <a href="/Department">View All</a>
     </form>
 </body>
 </html>

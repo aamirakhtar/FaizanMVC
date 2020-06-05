@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,20 +13,16 @@ namespace Company.Controllers
         {
             CompanyEntities ce = new CompanyEntities();
 
-            //ViewBag.departments = ce.Departments.ToList();
-            ViewData["departments"] = ce.Departments.ToList();
+            ViewBag.departments = ce.Departments.ToList();
+            //ViewData["departments"] = ce.Departments.ToList();
 
             return View();
         }
 
-        public ViewResult Welcome()
+        public ActionResult Test()
         {
-            return View();
-        }
-
-        public string WelcomeWithDate()
-        {
-            return "Welcome Faizan" + DateTime.Now.ToString();
+            TempData["msg"] = "hello";
+            return RedirectToAction("index");
         }
 
         public ActionResult AddDepartment()
@@ -48,6 +45,8 @@ namespace Company.Controllers
             //System.Data.Entity.EntityState is crud operation enum
             ce.Entry(dept).State = System.Data.Entity.EntityState.Added;
             ce.SaveChanges();
+
+            ViewBag.msg = "Department Added Successfully";
 
             return View();
         }
