@@ -153,11 +153,11 @@
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\Department\Welcome.cshtml" />
-    <Content Include="Views\Department\AddDepartment.cshtml" />
+    <Content Include="Views\Department\Create.cshtml" />
     <Content Include="Views\Department\AddDepartmentSubmit.cshtml" />
     <Content Include="Views\Department\Index.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
-    <Content Include="Views\Employee\AddEmployee.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

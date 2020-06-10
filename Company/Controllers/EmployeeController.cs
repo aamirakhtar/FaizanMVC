@@ -16,7 +16,7 @@ namespace Company.Controllers
             return View();
         }
 
-        public ActionResult AddEmployee()
+        public ActionResult Create()
         {
             CompanyEntities ce = new CompanyEntities();
             ViewBag.departments = ce.Departments.ToList();
@@ -24,7 +24,7 @@ namespace Company.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddEmployee(string name, int age, int departmentId, string dob)
+        public ActionResult Create(string name, int age, int departmentId, string dob)
         {
             CompanyEntities ce = new CompanyEntities();
             ViewBag.departments = ce.Departments.ToList();
