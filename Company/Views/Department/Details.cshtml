@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Department department = ViewBag.department;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Department Details</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>
+                @Html.Label(department.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>Location</td>
+            <td>
+                @Html.Label(department.Location)
+            </td>
+        </tr>
+        <tr>
+            <td>Department Head</td>
+            <td>
+                @Html.Label(department.DepartmentHead)
+            </td>
+        </tr>
+    </table>
+
+    <a href="/Department">View All</a>
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <a href="/Home">Home</a> | 
+                <a href="/Department">Departments</a> |
+                <a href="/Employee">Employees</a> |
+                <a href="/Home/AboutUs">About us</a> |
+                <a href="/Home/ContactUs">Contact us</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @RenderBody()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @DateTime.Now.ToString("dd-MMM-yyyy hh:mm:ss tt")
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

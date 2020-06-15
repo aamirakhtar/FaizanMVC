@@ -1,8 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-    List<Department> departments = ViewBag.departments;
-    List<SelectListItem> list = departments.Select(d => new SelectListItem() { Value = d.Id.ToString(), Text = d.Name }).ToList();
+    Employee employee = ViewBag.employee;
 }
 
 <!DOCTYPE html>
@@ -10,35 +8,38 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Add Employee</title>
+    <title>Delete Employee</title>
 </head>
 <body>
-    <form method="post">
+    <form method="post" action="DeleteSubmit">
         <p>@ViewBag.msg</p>
         <table>
             <tr>
                 <td>Name</td>
-                <td>@Html.TextBox("name")</td>
+                <td>@Html.Label(employee.Name)</td>
             </tr>
             <tr>
                 <td>Age</td>
-                <td>@Html.TextBox("age")</td>
+                <td>@Html.Label(employee.Age.ToString())</td>
             </tr>
             <tr>
                 <td>Department</td>
-                <td>@Html.DropDownList("departmentId", list)</td>
+                <td>@Html.Label(employee.Department.Name)</td>
             </tr>
             <tr>
                 <td>Date Of Birth</td>
-                <td>@Html.TextBox("dob")</td>
+                <td>@Html.Label(employee.DateOfBirth.ToString())</td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Delete" />
                 </td>
             </tr>
         </table>
+
         <a href="/Employee">View All</a>
+
+        <input type="hidden" value="@employee.Id" name="id" />
     </form>
 </body>
 </html>

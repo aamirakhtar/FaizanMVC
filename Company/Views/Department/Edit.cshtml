@@ -1,5 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Department department = ViewBag.department;
 }
 
 <!DOCTYPE html>
@@ -7,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Create Department</title>
+    <title>Edit Department</title>
 </head>
 <body>
     <form method="post">
@@ -17,21 +18,21 @@
                 <td>Name</td>
                 <td>
                     @*<input type="text" name="name" />*@
-                    @Html.TextBox("name")
+                    @Html.TextBox("name", department.Name)
                 </td>
             </tr>
             <tr>
                 <td>Location</td>
                 <td>
                     @*<input type="text" name="location" />*@
-                    @Html.TextBox("location")
+                    @Html.TextBox("location", department.Location)
                 </td>
             </tr>
             <tr>
                 <td>Department Head</td>
                 <td>
                     @*<input type="text" name="departmentHead" />*@
-                    @Html.TextBox("departmentHead")
+                    @Html.TextBox("departmentHead", department.DepartmentHead)
                 </td>
             </tr>
             <tr>
@@ -41,6 +42,8 @@
             </tr>
         </table>
         <a href="/Department">View All</a>
+
+        <input type="hidden" value="@department.Id" name="id" />
     </form>
 </body>
 </html>

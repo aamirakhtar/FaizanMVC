@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Employee employee = ViewBag.employee;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Employee Details</title>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>@Html.Label(employee.Name)</td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>@Html.Label(employee.Age.ToString())</td>
+        </tr>
+        <tr>
+            <td>Department</td>
+            <td>@Html.Label(employee.Department.Name)</td>
+        </tr>
+        <tr>
+            <td>Date Of Birth</td>
+            <td>@Html.Label(employee.DateOfBirth.ToString())</td>
+        </tr>
+    </table>
+
+    <a href="/Employee">View All</a>
+</body>
+</html>

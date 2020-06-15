@@ -1,5 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Department department = ViewBag.department;
 }
 
 <!DOCTYPE html>
@@ -7,40 +8,42 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Create Department</title>
+    <title>Delete Department</title>
 </head>
 <body>
-    <form method="post">
+    <form method="post" action="DeleteSubmit">
         <p>@ViewBag.msg</p>
         <table>
             <tr>
                 <td>Name</td>
                 <td>
-                    @*<input type="text" name="name" />*@
-                    @Html.TextBox("name")
+                    @Html.Label(department.Name)
                 </td>
             </tr>
             <tr>
                 <td>Location</td>
                 <td>
-                    @*<input type="text" name="location" />*@
-                    @Html.TextBox("location")
+                    @Html.Label(department.Location)
                 </td>
             </tr>
             <tr>
                 <td>Department Head</td>
                 <td>
-                    @*<input type="text" name="departmentHead" />*@
-                    @Html.TextBox("departmentHead")
+                    @Html.Label(department.DepartmentHead)
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="submit" value="Submit" />
+                    <h1>Are you sure you want to delete Department: "@department.Name"</h1>
+
+                    <input type="submit" value="Delete" />
                 </td>
             </tr>
         </table>
+
         <a href="/Department">View All</a>
+
+        <input type="hidden" value="@department.Id" name="id" />
     </form>
 </body>
 </html>

@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
     List<Employee> employees = ViewBag.employees;
 }
@@ -25,6 +25,7 @@
                         <th>Department</th>
                         <th>Age</th>
                         <th>DOB</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 @foreach (var emp in employees)
@@ -35,6 +36,12 @@
                         <td>@emp.Department.Name</td>
                         <td>@emp.Age</td>
                         <td>@emp.DateOfBirth</td>
+                        <td>
+                            <a href="/Employee/Details?id=@emp.Id">Details</a> |
+                            <a href="/Employee/Edit?id=@emp.Id">Edit</a> |
+                            <a href="/Employee/Delete?id=@emp.Id">Delete</a>
+
+                        </td>
                     </tr>
                 }
             </table>
