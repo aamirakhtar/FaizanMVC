@@ -77,93 +77,93 @@ namespace Company.Controllers
             return RedirectToAction("index");
         }
 
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        public ActionResult Create(string name, string location, string departmentHead)
-        {
-            //Department is a data object which is made by Entity Framework. Its a db table snapshot converted into class
-            Department dept = new Department();
-            dept.Name = name;
-            dept.Location = location;
-            dept.DepartmentHead = departmentHead;
+        //[HttpPost]
+        //public ActionResult Create(string name, string location, string departmentHead)
+        //{
+        //    //Department is a data object which is made by Entity Framework. Its a db table snapshot converted into class
+        //    Department dept = new Department();
+        //    dept.Name = name;
+        //    dept.Location = location;
+        //    dept.DepartmentHead = departmentHead;
 
-            //Company Entities is a connection string
+        //    //Company Entities is a connection string
 
-            //System.Data.Entity.EntityState is crud operation enum
-            ce.Entry(dept).State = System.Data.Entity.EntityState.Added;
-            ce.SaveChanges();
+        //    //System.Data.Entity.EntityState is crud operation enum
+        //    ce.Entry(dept).State = System.Data.Entity.EntityState.Added;
+        //    ce.SaveChanges();
 
-            #region ADO.Net
-            //string connString = ConfigurationManager.ConnectionStrings["DefaultConn"].ToString();
-            //SqlConnection conn = new SqlConnection(connString);
+        //    #region ADO.Net
+        //    //string connString = ConfigurationManager.ConnectionStrings["DefaultConn"].ToString();
+        //    //SqlConnection conn = new SqlConnection(connString);
 
-            ////SqlCommand command = new SqlCommand("insert into department values(@Name,@Location,@DepartmentHead)", conn);
-            ////command.Parameters.AddWithValue("@Name", name);
-            ////command.Parameters.AddWithValue("@Location", location);
-            ////command.Parameters.AddWithValue("@DepartmentHead", departmentHead);
+        //    ////SqlCommand command = new SqlCommand("insert into department values(@Name,@Location,@DepartmentHead)", conn);
+        //    ////command.Parameters.AddWithValue("@Name", name);
+        //    ////command.Parameters.AddWithValue("@Location", location);
+        //    ////command.Parameters.AddWithValue("@DepartmentHead", departmentHead);
 
-            //SqlCommand command = new SqlCommand($"insert into department values('{name}','{location}','{departmentHead}')", conn);
+        //    //SqlCommand command = new SqlCommand($"insert into department values('{name}','{location}','{departmentHead}')", conn);
 
-            //conn.Open();
-            //var reader = command.ExecuteNonQuery();
-            //conn.Close();
-            #endregion
+        //    //conn.Open();
+        //    //var reader = command.ExecuteNonQuery();
+        //    //conn.Close();
+        //    #endregion
 
-            ViewBag.msg = "Department Added Successfully";
+        //    ViewBag.msg = "Department Added Successfully";
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public ActionResult Edit(int id)
-        {
-            ViewBag.department = ce.Departments.Where(d => d.Id == id).FirstOrDefault();
+        //public ActionResult Edit(int id)
+        //{
+        //    ViewBag.department = ce.Departments.Where(d => d.Id == id).FirstOrDefault();
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        [HttpPost]
-        public ActionResult Edit(int id, string name, string location, string departmentHead)
-        {
-            //Department is a data object which is made by Entity Framework. Its a db table snapshot converted into class
-            Department dept = new Department();
-            dept.Id = id;
-            dept.Name = name;
-            dept.Location = location;
-            dept.DepartmentHead = departmentHead;
+        //[HttpPost]
+        //public ActionResult Edit(int id, string name, string location, string departmentHead)
+        //{
+        //    //Department is a data object which is made by Entity Framework. Its a db table snapshot converted into class
+        //    Department dept = new Department();
+        //    dept.Id = id;
+        //    dept.Name = name;
+        //    dept.Location = location;
+        //    dept.DepartmentHead = departmentHead;
 
-            //ce = new CompanyEntities();
+        //    //ce = new CompanyEntities();
 
-            //Company Entities is a connection string
-            //System.Data.Entity.EntityState is crud operation enum
-            ce.Entry(dept).State = System.Data.Entity.EntityState.Modified;
-            ce.SaveChanges();
+        //    //Company Entities is a connection string
+        //    //System.Data.Entity.EntityState is crud operation enum
+        //    ce.Entry(dept).State = System.Data.Entity.EntityState.Modified;
+        //    ce.SaveChanges();
 
-            ViewBag.department = dept;
+        //    ViewBag.department = dept;
 
-            ViewBag.msg = "Department Updated Successfully";
+        //    ViewBag.msg = "Department Updated Successfully";
 
-            #region ADO.Net
-            //string connString = ConfigurationManager.ConnectionStrings["DefaultConn"].ToString();
-            //SqlConnection conn = new SqlConnection(connString);
+        //    #region ADO.Net
+        //    //string connString = ConfigurationManager.ConnectionStrings["DefaultConn"].ToString();
+        //    //SqlConnection conn = new SqlConnection(connString);
 
-            ////SqlCommand command = new SqlCommand("insert into department values(@Name,@Location,@DepartmentHead)", conn);
-            ////command.Parameters.AddWithValue("@Name", name);
-            ////command.Parameters.AddWithValue("@Location", location);
-            ////command.Parameters.AddWithValue("@DepartmentHead", departmentHead);
+        //    ////SqlCommand command = new SqlCommand("insert into department values(@Name,@Location,@DepartmentHead)", conn);
+        //    ////command.Parameters.AddWithValue("@Name", name);
+        //    ////command.Parameters.AddWithValue("@Location", location);
+        //    ////command.Parameters.AddWithValue("@DepartmentHead", departmentHead);
 
-            //SqlCommand command = new SqlCommand($"update Department set Name='{name}', Location='{location}', DepartmentHead='{departmentHead}' where Id={id}", conn);
+        //    //SqlCommand command = new SqlCommand($"update Department set Name='{name}', Location='{location}', DepartmentHead='{departmentHead}' where Id={id}", conn);
 
-            //conn.Open();
-            //command.ExecuteNonQuery();
-            //conn.Close();
-            #endregion
+        //    //conn.Open();
+        //    //command.ExecuteNonQuery();
+        //    //conn.Close();
+        //    #endregion
 
-            return View();
-        }
+        //    return View();
+        //}
 
         public ActionResult Delete(int id)
         {
@@ -203,10 +203,52 @@ namespace Company.Controllers
 
         public ActionResult Details(int id)
         {
-            ViewBag.department = ce.Departments.Where(d => d.Id == id).FirstOrDefault();
+            //ViewBag.department = ce.Departments.Where(d => d.Id == id).FirstOrDefault();
+            Department model = ce.Departments.Where(d => d.Id == id).FirstOrDefault();
+
+            return View(model);
+        }
+
+        #region Models
+        public ActionResult Create()
+        {
+            Department model = new Department();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Create(Department model)
+        {
+            //Department is a data object which is made by Entity Framework. Its a db table snapshot converted into class
+            
+            //System.Data.Entity.EntityState is crud operation enum
+            ce.Entry(model).State = System.Data.Entity.EntityState.Added;
+            ce.SaveChanges();
+
+            ViewBag.msg = "Department Added Successfully";
 
             return View();
         }
+
+        public ActionResult Edit(int id)
+        {
+            Department model = ce.Departments.Where(d => d.Id == id).FirstOrDefault();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Department model)
+        {
+            //System.Data.Entity.EntityState is crud operation enum
+            ce.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            ce.SaveChanges();
+
+            ViewBag.msg = "Department Updated Successfully";
+
+            return View(model);
+        }
+        #endregion
 
         //Parameterized
         //public ActionResult AddDepartmentSubmit(string name, string location, string departmentHead)

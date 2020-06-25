@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Department
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -17,21 +18,21 @@
                 <td>Name</td>
                 <td>
                     @*<input type="text" name="name" />*@
-                    @Html.TextBox("name")
+                    @Html.TextBoxFor(m => m.Name)
                 </td>
             </tr>
             <tr>
                 <td>Location</td>
                 <td>
                     @*<input type="text" name="location" />*@
-                    @Html.TextBox("location")
+                    @Html.TextBoxFor(m => m.Location)
                 </td>
             </tr>
             <tr>
                 <td>Department Head</td>
                 <td>
                     @*<input type="text" name="departmentHead" />*@
-                    @Html.TextBox("departmentHead")
+                    @Html.TextBoxFor(m => m.DepartmentHead)
                 </td>
             </tr>
             <tr>

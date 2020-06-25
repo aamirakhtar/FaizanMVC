@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Company.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,69 +23,69 @@ namespace Company.Controllers
             return View();
         }
 
-        public ActionResult Create()
-        {
-            ViewBag.departments = ce.Departments.ToList();
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    ViewBag.departments = ce.Departments.ToList();
+        //    return View();
+        //}
 
-        [HttpPost]
-        public ActionResult Create(string name, int age, int departmentId, string dob)
-        {
-            ViewBag.departments = ce.Departments.ToList();
+        //[HttpPost]
+        //public ActionResult Create(string name, int age, int departmentId, string dob)
+        //{
+        //    ViewBag.departments = ce.Departments.ToList();
 
-            //Employee is a data object which is made by Entity Framework. Its a db table snapshot converted into class
-            Employee emp = new Employee();
-            emp.Name = name;
-            emp.Age = age;
-            emp.DepartmentId = departmentId;
-            emp.DateOfBirth = DateTime.Parse(dob);
+        //    //Employee is a data object which is made by Entity Framework. Its a db table snapshot converted into class
+        //    Employee emp = new Employee();
+        //    emp.Name = name;
+        //    emp.Age = age;
+        //    emp.DepartmentId = departmentId;
+        //    emp.DateOfBirth = DateTime.Parse(dob);
 
-            //Company Entities is a connection string
+        //    //Company Entities is a connection string
 
-            //System.Data.Entity.EntityState is crud operation enum
-            ce.Entry(emp).State = System.Data.Entity.EntityState.Added;
-            ce.SaveChanges();
+        //    //System.Data.Entity.EntityState is crud operation enum
+        //    ce.Entry(emp).State = System.Data.Entity.EntityState.Added;
+        //    ce.SaveChanges();
 
-            ViewBag.msg = "Employee Added Successfully";
+        //    ViewBag.msg = "Employee Added Successfully";
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public ActionResult Edit(int id)
-        {
-            ViewBag.employee = ce.Employees.Where(e => e.Id == id).FirstOrDefault();
+        //public ActionResult Edit(int id)
+        //{
+        //    ViewBag.employee = ce.Employees.Where(e => e.Id == id).FirstOrDefault();
 
-            ViewBag.departments = ce.Departments.ToList();
+        //    ViewBag.departments = ce.Departments.ToList();
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        [HttpPost]
-        public ActionResult Edit(int id, string name, int age, int departmentId, string dob)
-        {
-            ViewBag.departments = ce.Departments.ToList();
+        //[HttpPost]
+        //public ActionResult Edit(int id, string name, int age, int departmentId, string dob)
+        //{
+        //    ViewBag.departments = ce.Departments.ToList();
 
-            //Employee is a data object which is made by Entity Framework. Its a db table snapshot converted into class
-            Employee emp = new Employee();
-            emp.Id = id;
-            emp.Name = name;
-            emp.Age = age;
-            emp.DepartmentId = departmentId;
-            emp.DateOfBirth = DateTime.Parse(dob);
+        //    //Employee is a data object which is made by Entity Framework. Its a db table snapshot converted into class
+        //    Employee emp = new Employee();
+        //    emp.Id = id;
+        //    emp.Name = name;
+        //    emp.Age = age;
+        //    emp.DepartmentId = departmentId;
+        //    emp.DateOfBirth = DateTime.Parse(dob);
 
-            //Company Entities is a connection string
+        //    //Company Entities is a connection string
 
-            //System.Data.Entity.EntityState is crud operation enum
-            ce.Entry(emp).State = System.Data.Entity.EntityState.Modified;
-            ce.SaveChanges();
+        //    //System.Data.Entity.EntityState is crud operation enum
+        //    ce.Entry(emp).State = System.Data.Entity.EntityState.Modified;
+        //    ce.SaveChanges();
 
-            ViewBag.employee = emp;
+        //    ViewBag.employee = emp;
 
-            ViewBag.msg = "Employee Updated Successfully";
+        //    ViewBag.msg = "Employee Updated Successfully";
 
-            return View();
-        }
+        //    return View();
+        //}
 
         public ActionResult Delete(int id)
         {
@@ -128,5 +129,76 @@ namespace Company.Controllers
 
             return View();
         }
+
+        #region Models
+
+        public ActionResult Create()
+        {
+            //ViewBag.departments = ce.Departments.ToList();
+
+            EmployeeModel model = new EmployeeModel();
+
+            model.employee = new Employee();
+            model.departments = ce.Departments.ToList();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Create(EmployeeModel model)
+        {
+            //ViewBag.departments = ce.Departments.ToList();
+            model.departments = ce.Departments.ToList();
+
+            Employee emp = new Employee();
+            emp.Name = model.employee.Name;
+            emp.Age = model.employee.Age;
+            emp.DepartmentId = model.employee.DepartmentId;
+            emp.DateOfBirth = model.employee.DateOfBirth;
+
+            //System.Data.Entity.EntityState is crud operation enum
+            ce.Entry(emp).State = System.Data.Entity.EntityState.Added;
+            ce.SaveChanges();
+
+            ViewBag.msg = "Employee Added Successfully";
+
+            return View(model);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            EmployeeModel model = new EmployeeModel();
+
+            model.employee = ce.Employees.Where(e => e.Id == id).FirstOrDefault();
+            model.departments = ce.Departments.ToList();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EmployeeModel model)
+        {
+            ce = new CompanyEntities();
+
+            model.departments = ce.Departments.ToList();
+
+            Employee emp = new Employee();
+            emp.Name = model.employee.Name;
+            emp.Age = model.employee.Age;
+            emp.DepartmentId = model.employee.DepartmentId;
+            emp.DateOfBirth = model.employee.DateOfBirth;
+
+            //System.Data.Entity.EntityState is crud operation enum
+            ce.Entry(emp).State = System.Data.Entity.EntityState.Modified;
+            ce.SaveChanges();
+
+            ViewBag.employee = model.employee;
+
+            ViewBag.msg = "Employee Updated Successfully";
+
+            return View(model);
+        }
+
+        #endregion
     }
 }

@@ -1,8 +1,9 @@
-﻿@{
+﻿@model Company.Models.EmployeeModel
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    List<Department> departments = ViewBag.departments;
-    List<SelectListItem> list = departments.Select(d => new SelectListItem() { Value = d.Id.ToString(), Text = d.Name }).ToList();
+    //List<Department> departments = ViewBag.departments;
+    List<SelectListItem> list = Model.departments.Select(d => new SelectListItem() { Value = d.Id.ToString(), Text = d.Name }).ToList();
 }
 
 <!DOCTYPE html>
@@ -18,19 +19,19 @@
         <table>
             <tr>
                 <td>Name</td>
-                <td>@Html.TextBox("name")</td>
+                <td>@Html.TextBoxFor(m => m.employee.Name)</td>
             </tr>
             <tr>
                 <td>Age</td>
-                <td>@Html.TextBox("age")</td>
+                <td>@Html.TextBoxFor(m => m.employee.Age)</td>
             </tr>
             <tr>
                 <td>Department</td>
-                <td>@Html.DropDownList("departmentId", list)</td>
+                <td>@Html.DropDownListFor(m => m.employee.DepartmentId, list)</td>
             </tr>
             <tr>
                 <td>Date Of Birth</td>
-                <td>@Html.TextBox("dob")</td>
+                <td>@Html.TextBoxFor(m => m.employee.DateOfBirth)</td>
             </tr>
             <tr>
                 <td colspan="2">

@@ -1,6 +1,6 @@
-﻿@{
+﻿@model Department
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    Department department = ViewBag.department;
 }
 
 <!DOCTYPE html>
@@ -18,21 +18,21 @@
                 <td>Name</td>
                 <td>
                     @*<input type="text" name="name" />*@
-                    @Html.TextBox("name", department.Name)
+                    @Html.TextBoxFor(m => m.Name)
                 </td>
             </tr>
             <tr>
                 <td>Location</td>
                 <td>
                     @*<input type="text" name="location" />*@
-                    @Html.TextBox("location", department.Location)
+                    @Html.TextBoxFor(m => m.Location)
                 </td>
             </tr>
             <tr>
                 <td>Department Head</td>
                 <td>
                     @*<input type="text" name="departmentHead" />*@
-                    @Html.TextBox("departmentHead", department.DepartmentHead)
+                    @Html.TextBoxFor(m => m.DepartmentHead)
                 </td>
             </tr>
             <tr>
@@ -43,7 +43,7 @@
         </table>
         <a href="/Department">View All</a>
 
-        <input type="hidden" value="@department.Id" name="id" />
+        <input type="hidden" value="@Model.Id" name="id" />
     </form>
 </body>
 </html>

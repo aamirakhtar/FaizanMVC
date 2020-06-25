@@ -1,6 +1,6 @@
-﻿@{
+﻿@model Department
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    Department department = ViewBag.department;
 }
 
 <!DOCTYPE html>
@@ -15,19 +15,19 @@
         <tr>
             <td>Name</td>
             <td>
-                @Html.Label(department.Name)
+                @Html.Label(Model.Name)
             </td>
         </tr>
         <tr>
             <td>Location</td>
             <td>
-                @Html.Label(department.Location)
+                @Html.Label(Model.Location)
             </td>
         </tr>
         <tr>
             <td>Department Head</td>
             <td>
-                @Html.Label(department.DepartmentHead)
+                @Html.Label(Model.DepartmentHead)
             </td>
         </tr>
     </table>
