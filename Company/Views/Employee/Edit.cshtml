@@ -1,54 +1,56 @@
 ﻿@model Company.Models.EmployeeModel
-    @{
-        Layout = "~/Views/Shared/_Layout.cshtml";
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
-        List<SelectListItem> list = new List<SelectListItem>();
+    List<Department> departments = Model.departments;
+    List<SelectListItem> list = new List<SelectListItem>();
 
-        if (Model.employee != null)
+    if (Model.employee != null)
+    {
+        foreach (Department dept in departments)
         {
-            foreach (Department dept in Model.departments)
-            {
-                bool isSelected = Model.employee.DepartmentId == dept.Id;
+            bool isSelected = Model.employee.DepartmentId == dept.Id;
 
-                list.Add(new SelectListItem() { Value = dept.Id.ToString(), Text = dept.Name, Selected = isSelected });
-            }
+            list.Add(new SelectListItem() { Value = dept.Id.ToString(), Text = dept.Name, Selected = isSelected });
         }
     }
+}
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 
-    <html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title>Edit Employee</title>
-    </head>
-    <body>
-        <form method="post">
-            <p>@ViewBag.msg</p>
-            <table>
-                <tr>
-                    <td>Name</td>
-                    <td>@Html.TextBoxFor(m => m.employee.Name)</td>
-                </tr>
-                <tr>
-                    <td>Age</td>
-                    <td>@Html.TextBoxFor(m => m.employee.Age)</td>
-                </tr>
-                <tr>
-                    <td>Department</td>
-                    <td>@Html.DropDownListFor(m => m.employee.DepartmentId, list)</td>
-                </tr>
-                <tr>
-                    <td>Date Of Birth</td>
-                    <td>@Html.TextBoxFor(m => m.employee.DateOfBirth)</td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" value="Submit" />
-                    </td>
-                </tr>
-            </table>
-            <a href="/Employee">View All</a>
-        </form>
-    </body>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Employee</title>
+</head>
+<body>
+    <form method="post">
+        <p>@ViewBag.msg</p>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>@Html.TextBoxFor(m => m.employee.Name)</td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td>@Html.TextBoxFor(m => m.employee.Age)</td>
+            </tr>
+            <tr>
+                <td>Department</td>
+                <td>@Html.DropDownListFor(m => m.employee.DepartmentId, list)</td>
+            </tr>
+            <tr>
+                <td>Date Of Birth</td>
+                <td>@Html.TextBoxFor(m => m.employee.DateOfBirth)</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Submit" />
+                </td>
+            </tr>
+        </table>
+        <a href="/Employee">View All</a>
+        @Html.HiddenFor(m => m.employee.Id)
+    </form>
+</body>
 </html>

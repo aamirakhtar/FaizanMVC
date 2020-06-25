@@ -98,8 +98,8 @@
   <ItemGroup>
     <Content Include="CompanyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CompanyModel.Context.cs</LastGenOutput>
       <DependentUpon>CompanyModel.edmx</DependentUpon>
+      <LastGenOutput>CompanyModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="CompanyModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

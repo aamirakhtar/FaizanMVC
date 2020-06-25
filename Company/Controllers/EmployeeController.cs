@@ -150,14 +150,8 @@ namespace Company.Controllers
             //ViewBag.departments = ce.Departments.ToList();
             model.departments = ce.Departments.ToList();
 
-            Employee emp = new Employee();
-            emp.Name = model.employee.Name;
-            emp.Age = model.employee.Age;
-            emp.DepartmentId = model.employee.DepartmentId;
-            emp.DateOfBirth = model.employee.DateOfBirth;
-
             //System.Data.Entity.EntityState is crud operation enum
-            ce.Entry(emp).State = System.Data.Entity.EntityState.Added;
+            ce.Entry(model.employee).State = System.Data.Entity.EntityState.Added;
             ce.SaveChanges();
 
             ViewBag.msg = "Employee Added Successfully";
@@ -178,18 +172,10 @@ namespace Company.Controllers
         [HttpPost]
         public ActionResult Edit(EmployeeModel model)
         {
-            ce = new CompanyEntities();
-
             model.departments = ce.Departments.ToList();
 
-            Employee emp = new Employee();
-            emp.Name = model.employee.Name;
-            emp.Age = model.employee.Age;
-            emp.DepartmentId = model.employee.DepartmentId;
-            emp.DateOfBirth = model.employee.DateOfBirth;
-
             //System.Data.Entity.EntityState is crud operation enum
-            ce.Entry(emp).State = System.Data.Entity.EntityState.Modified;
+            ce.Entry(model.employee).State = System.Data.Entity.EntityState.Modified;
             ce.SaveChanges();
 
             ViewBag.employee = model.employee;
