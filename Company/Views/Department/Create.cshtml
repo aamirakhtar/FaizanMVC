@@ -17,22 +17,25 @@
             <tr>
                 <td>Name</td>
                 <td>
-                    @*<input type="text" name="name" />*@
-                    @Html.TextBoxFor(m => m.Name)
+                    @*<input type="text" name="name" id="name" />*@
+                    @Html.TextBoxFor(m => m.Name) *
+                    @Html.ValidationMessageFor(m => m.Name)
                 </td>
             </tr>
             <tr>
                 <td>Location</td>
                 <td>
                     @*<input type="text" name="location" />*@
-                    @Html.TextBoxFor(m => m.Location)
+                    @Html.TextBoxFor(m => m.Location) *
+                    @Html.ValidationMessageFor(m => m.Location)
                 </td>
             </tr>
             <tr>
                 <td>Department Head</td>
                 <td>
                     @*<input type="text" name="departmentHead" />*@
-                    @Html.TextBoxFor(m => m.DepartmentHead)
+                    @Html.TextBoxFor(m => m.DepartmentHead) *
+                    @Html.ValidationMessageFor(m => m.DepartmentHead)
                 </td>
             </tr>
             <tr>

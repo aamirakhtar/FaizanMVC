@@ -220,12 +220,14 @@ namespace Company.Controllers
         public ActionResult Create(Department model)
         {
             //Department is a data object which is made by Entity Framework. Its a db table snapshot converted into class
-            
-            //System.Data.Entity.EntityState is crud operation enum
-            ce.Entry(model).State = System.Data.Entity.EntityState.Added;
-            ce.SaveChanges();
 
-            ViewBag.msg = "Department Added Successfully";
+            if (ModelState.IsValid)
+            {
+                ce.Entry(model).State = System.Data.Entity.EntityState.Added;
+                ce.SaveChanges();
+
+                ViewBag.msg = "Department Added Successfully";
+            }
 
             return View();
         }

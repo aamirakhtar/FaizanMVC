@@ -11,7 +11,8 @@ namespace Company
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +20,20 @@ namespace Company
         {
             this.Employees = new HashSet<Employee>();
         }
-    
+
         public int Id { get; set; }
+
+        [MaxLength(20, ErrorMessage = "Name can be maximum of 10 characters.")]
+        [MinLength(2, ErrorMessage = "Name can be maximum of 10 characters.")]
+        [Required(ErrorMessage = "Please Enter Name.")]        
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Location.")]
         public string Location { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Department Head.")]
         public string DepartmentHead { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
     }
