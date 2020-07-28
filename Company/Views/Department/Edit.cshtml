@@ -15,7 +15,7 @@
         <p>@ViewBag.msg</p>
         <table>
             <tr>
-                <td>Name</td>
+                <td>@Html.LabelFor(m => m.Name)</td>
                 <td>
                     @*<input type="text" name="name" />*@
                     @Html.TextBoxFor(m => m.Name)
