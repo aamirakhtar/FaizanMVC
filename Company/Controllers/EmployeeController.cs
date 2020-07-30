@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Company.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         public CompanyEntities ce { get; set; }

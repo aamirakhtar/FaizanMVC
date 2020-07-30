@@ -33,14 +33,19 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                    <li><a href="/Home">Home</a></li>
-                    <li><a href="/Department">Departments</a></li>
-                    <li><a href="/Employee">Employees</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="/Department">View Departments</a></li>
+                        <li><a href="/Employee">View Employees</a></li>
+                        <li><a href="/Department/Create">Create Department</a></li>
+                        <li><a href="/Employee/Create">Create Employee</a></li>
+                        <li><a href="/Users">Users</a></li>
+                        <li><a href="/Roles">Roles</a></li>
+                    }
                     <li><a href="/Home/AboutUs">About us</a></li>
                     <li><a href="/Home/ContactUs">Contact us</a></li>
+                    <li><a href="/Account/Login">Login</a></li>
+                    <li><a href="/Account/Logout">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -53,32 +58,3 @@
         </footer>
     </div>
 </body>
-
-
-@*<body>
-        <table>
-            <tr>
-                <td>
-                    <a href="/Home">Home</a> |
-                    <a href="/Department">Departments</a> |
-                    <a href="/Employee">Employees</a> |
-                    <a href="/Home/AboutUs">About us</a> |
-                    <a href="/Home/ContactUs">Contact us</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @RenderBody()
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <br />
-                    <br />
-                    <br />
-                    Today's Date: @DateTime.Now.ToString("dd-MMM-yyyy hh:mm:ss tt")
-                </td>
-            </tr>
-        </table>
-    </body>*@
-</html>

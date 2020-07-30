@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Company.Controllers
 {
+    [Authorize]
     public class DepartmentController : Controller
     {
         public CompanyEntities ce { get; set; }
@@ -210,6 +211,7 @@ namespace Company.Controllers
         }
 
         #region Models
+
         public ActionResult Create()
         {
             Department model = new Department();

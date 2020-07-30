@@ -8,7 +8,10 @@
         <EntityTypeShape EntityType="CompanyModel.Department" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CompanyModel.Employee" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="CompanyModel.FK_Employee_Department" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="CompanyModel.Role" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="CompanyModel.User" Width="1.5" PointX="3" PointY="4.875" />
+        <AssociationConnector Association="CompanyModel.FK_User_Role" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
