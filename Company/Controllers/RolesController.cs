@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 
 namespace Company.Controllers
 {
+    [Authorize]
     public class RolesController : Controller
     {
         private CompanyEntities db = new CompanyEntities();

@@ -179,6 +179,7 @@
     <Compile Include="User.cs">
       <DependentUpon>CompanyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ValidationMetaData\CompanyRoleProvider.cs" />
     <Compile Include="ValidationMetaData\DepartmentMetaData.cs" />
     <Compile Include="ValidationMetaData\UniqueCheckValidation.cs" />
   </ItemGroup>

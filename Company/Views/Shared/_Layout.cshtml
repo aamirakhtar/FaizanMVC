@@ -37,20 +37,31 @@
                     {
                         <li><a href="/Department">View Departments</a></li>
                         <li><a href="/Employee">View Employees</a></li>
-                        <li><a href="/Department/Create">Create Department</a></li>
+                        if (User.IsInRole("Editor") || User.IsInRole("Admin"))
+                        {
+                            <li><a href="/Department/Create">Create Department</a></li>
+                        }
                         <li><a href="/Employee/Create">Create Employee</a></li>
                         <li><a href="/Users">Users</a></li>
                         <li><a href="/Roles">Roles</a></li>
                     }
                     <li><a href="/Home/AboutUs">About us</a></li>
                     <li><a href="/Home/ContactUs">Contact us</a></li>
-                    <li><a href="/Account/Login">Login</a></li>
-                    <li><a href="/Account/Logout">Logout</a></li>
+
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="/Account/Login">Login</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Account/Logout">Logout</a></li>
+                    }
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
+        <h2>Welcome @User.Identity.Name</h2>
         @RenderBody()
         <hr />
         <footer>

@@ -19,3 +19,9 @@ Controller to View:-
 2-ViewData (DataDictionary)
 3-TempData (Dictionary) (It can move data from action to action as well untill its being read. To keep its value stored from all subsequent requests we have to call TempData.Keep() and again it will keep data untill read)
 4-Model
+
+Authentication:-
+To check whether the user is valid or not with the given credentials or given scheeme like sms or email code verification used in 2 factor authentication.
+
+Authorization:-
+To check whether the valid or authentic user has rights to access certain area of the application.

@@ -26,10 +26,29 @@ namespace Company.Controllers
         [HttpPost]
         public ActionResult Login(User user)
         {
+            User ur = null;
             //Authentication
             if (ce.Users.ToList().Exists(u => u.UserId == user.UserId && u.Password == user.Password))
+                ur = ce.Users.ToList().Single(u => u.UserId == user.UserId && u.Password == user.Password);
+
+            if (ur != null)
             {
-                FormsAuthentication.SetAuthCookie(user.UserId, false);
+                //FormsAuthentication.SetAuthCookie(user.UserId, true);
+
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
+                                ur.UserId,
+                                DateTime.Now,
+                                DateTime.Now.AddMinutes(30),
+                                true,
+                                ur.Role.Name,
+                                FormsAuthentication.FormsCookiePath);
+
+                // Encrypt the ticket.
+                string encTicket = FormsAuthentication.Encrypt(ticket);
+
+                // Create the cookie.
+                Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
+
                 return RedirectToAction("index", "home");
             }
             else

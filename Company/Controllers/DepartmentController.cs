@@ -166,6 +166,7 @@ namespace Company.Controllers
         //    return View();
         //}
 
+        [Authorize(Roles = "Editor,Admin")]
         public ActionResult Delete(int id)
         {
             ViewBag.department = ce.Departments.Where(d => d.Id == id).FirstOrDefault();
@@ -174,6 +175,7 @@ namespace Company.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Editor,Admin")]
         public ActionResult DeleteSubmit(int id)
         {
             try
@@ -211,7 +213,7 @@ namespace Company.Controllers
         }
 
         #region Models
-
+        [Authorize(Roles = "Editor,Admin")]
         public ActionResult Create()
         {
             Department model = new Department();
@@ -219,6 +221,7 @@ namespace Company.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Editor,Admin")]
         public ActionResult Create(Department model)
         {
             //Department is a data object which is made by Entity Framework. Its a db table snapshot converted into class
@@ -234,6 +237,7 @@ namespace Company.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Editor,Admin")]
         public ActionResult Edit(int id)
         {
             Department model = ce.Departments.Where(d => d.Id == id).FirstOrDefault();
@@ -242,6 +246,7 @@ namespace Company.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Editor,Admin")]
         public ActionResult Edit(Department model)
         {
             //System.Data.Entity.EntityState is crud operation enum
