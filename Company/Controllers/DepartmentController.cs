@@ -257,6 +257,34 @@ namespace Company.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        public JsonResult DeleteDepartment(int id)
+        {
+            try
+            {
+                Department dept = ce.Departments.Where(d => d.Id == id).FirstOrDefault();
+
+                if (!ce.Employees.ToList().Exists(e => e.DepartmentId == id))
+                {
+                    //Department is a data object which is made by Entity Framework. Its a db table snapshot converted into class
+
+                    ce.Entry(dept).State = System.Data.Entity.EntityState.Deleted;
+                    ce.SaveChanges();
+
+                    return Json(new { status = "ok", msg = $"Department: '{dept.Name}' Deleted Successfully" }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { status = "fail", msg = $"Department: '{dept.Name}' has one or more employees, so cannot be deleted." }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { status = "fail", msg = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         #endregion
 
         //Parameterized
